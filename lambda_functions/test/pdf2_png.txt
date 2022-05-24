@@ -1,0 +1,1 @@
+curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{ "url" :"https://testpredicteev.s3.eu-west-1.amazonaws.com/MR+IBRAHIM+ASHAFA+STATEMENT.pdf",  "format": "WEMA_BANK", "out":"test-ml-predicteev"}'

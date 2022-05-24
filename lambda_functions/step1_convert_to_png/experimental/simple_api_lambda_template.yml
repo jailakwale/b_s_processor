@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31 # tells AWS CF this is a SAM template
+
+Resources: # creates an AWS lambda  with selected runtime, code zipped as an artifact
+  # creates an Amazon API Gateway + permissions
+  LambdaMLFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+    CodeUri: s3://sam-demo-bucket/todo_list.zip
+    Handler: app.handler
+    Runtime: python3.9
+    Policies: AmazonDynamoDBReadOnlyAccess
+    Events:
+      GetML:
+        Type: Api
+        Properties:
+          Path: /{proxy+}
+          Method: ANY
+ListTable: AWS::Serverless::SimpleTable #(create a AmazonDB table with 5 R&W limits)
+  

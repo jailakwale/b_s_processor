@@ -1,0 +1,12 @@
+FROM amazon/aws-lambda-python:3.9
+WORKDIR /home/ubuntu
+RUN yum update -y && yum install -y make curl wget sudo git gcc-c++ libgl1 libgl1-mesa-glx mesa-libGL ffmpeg libsm6 libxext6 python3 python3-pip
+RUN pip3 install tqdm pandas numpy glob2 requests zipfile38 openpyxl fsspec --target "${LAMBDA_TASK_ROOT}"
+
+WORKDIR "${LAMBDA_TASK_ROOT}"
+RUN git clone https://github.com/assansanogo/b_s_processor.git \
+&& ls "${LAMBDA_TASK_ROOT}"/b_s_processor/lambda_functions \
+&& cp  "${LAMBDA_TASK_ROOT}"/b_s_processor/lambda_functions/neo_analyze_5_banks.py "${LAMBDA_TASK_ROOT}" \
+&& ls "${LAMBDA_TASK_ROOT}"
+
+CMD ["neo_analyze_5_banks.liberta_leasing_analyze_handler"]

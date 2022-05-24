@@ -1,0 +1,30 @@
+bank,folder,filename,bank_account,template_type
+gt_bank,1_statement,214773647637581511468199616204-part1.pdf,CURRENT,NO_HEADER
+gt_bank,1_statement,214773647637581511468199616204-part2.pdf,SAVINGS,NO_HEADER
+gt_bank,1_statement,214773647637581511468199616204-part3.pdf,CURRENT,NO_HEADER
+gt_bank,1_statement,214773647637581511468199616204-part4.pdf,MASTERCARD/VISA DEBIT CARD,NO_HEADER
+gt_bank,1_statement,250231923637586605609611256130-part1,CURRENT,NO_HEADER
+gt_bank,1_statement,250231923637586605609611256130-part2,SAVINGS,NO_HEADER
+gt_bank,1_statement,Mr  festus oshokhue statement-part1,CURRENT,NO_HEADER
+gt_bank,1_statement,Mr  festus oshokhue statement-part2,SAVINGS,NO_HEADER
+gt_bank,1_statement,MR SAMSON UGWANYI STATEMENT-part1,CURRENT,NO_HEADER
+gt_bank,1_statement,MR SAMSON UGWANYI STATEMENT-part2,SAVINGS,NO_HEADER
+gt_bank,1_statement,MR TAPIYA JOHN BANK STATEMENT-part1,CURRENT,NO_HEADER
+gt_bank,1_statement,MR TAPIYA JOHN BANK STATEMENT-part2,SAVINGS,NO_HEADER
+gt_bank,1_statement,MR TAPIYA JOHN BANK STATEMENT-part3,CURRENT,NO_HEADER
+gt_bank,1_statement,Mr Tochukwu statement-part1,CURRENT,NO_HEADER
+gt_bank,1_statement,Mr Tochukwu statement-part2,SAVINGS,NO_HEADER
+gt_bank,1_statement,Mr Tochukwu statement-part3,CURRENT,NO_HEADER
+gt_bank,1_statement,Mr Tochukwu statement-part4,MASTERCARD/VISA DEBIT CARD,NO_HEADER
+gt_bank,statements,0163041071-(205154861110),CURRENT,HEADER
+gt_bank,statements,214773647637581511468199616204,MULTI,NO_HEADER
+gt_bank,statements,250231923637586605609611256130,MULTI,NO_HEADER
+gt_bank,statements,68197656963758929248882067034,SAVINGS,NO_HEADER
+gt_bank,statements,Abiodun_lanre_gtb_statement,CURRENT,HEADER
+gt_bank,statements,ADENIRAN SUNDAY STATEMENT,SAVINGS,NO_HEADER
+gt_bank,statements,Mr  festus oshokhue statement,MULTI,NO_HEADER
+gt_bank,statements,MR IBRAHIM ASHAFA STATEMENT,SAVINGS,NO_HEADER
+gt_bank,statements,MR MOSES ADEYEMI STATEMENT,SAVINGS,NO_HEADER
+gt_bank,statements,MR SAMSON UGWANYI STATEMENT,MULTI,NO_HEADER
+gt_bank,statements,MR TAPIYA JOHN BANK STATEMENT,MULTI,NO_HEADER
+gt_bank,statements,Mr Tochukwu statement,MULTI,NO_HEADER

@@ -1,0 +1,6 @@
+{
+  "url": "https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/before_classification/final_parsed.xlsx",
+  "format": "WEMA_BANK",
+  "model_Doc2Vec_path": "https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/before_classification/gensim_doc_2_vec.model",
+  "model_NLP_path": "https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/before_classification/rf_classifier.pkl"
+}

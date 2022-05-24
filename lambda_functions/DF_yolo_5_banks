@@ -1,0 +1,41 @@
+FROM amazon/aws-lambda-python:3.9
+WORKDIR /home/ubuntu
+RUN yum clean all
+RUN yum update -y && yum install make curl wget sudo git gcc-c++ libgl1 libgl1-mesa-glx mesa-libGL ffmpeg libsm6 libxext6 -y
+RUN pip3 install tqdm pandas opencv-python glob2 requests boto3 --target "${LAMBDA_TASK_ROOT}"
+
+WORKDIR "${LAMBDA_TASK_ROOT}"
+RUN git clone https://github.com/assansanogo/darknet.git
+RUN cd darknet && make -j8
+RUN cd darknet/data \
+&&  wget https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/data/obj.data \
+&&  wget https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/data/obj.names \
+&&  wget https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/data/yolov4-csp_best.weights \
+&&  wget https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/data/configuration/yolov4-csp_test.cfg
+
+ENV BATCH_SIZE = 1
+ENV DATA_FILE = ./obj.data
+ENV OBJ_NAMES = ./obj.names
+ENV MODEL_WEIGHTS = ./yolov4-csp_best.weights
+ENV MODEL_CFG = ./yolov4-csp_test.cfg
+
+WORKDIR "${LAMBDA_TASK_ROOT}"/darknet
+RUN  cd qualify_test && wget https://liberta-leasing-ml.s3.eu-west-1.amazonaws.com/data/qualify_data/MR+Adefisoye+Hezekiah+STATEMENT_4.png
+
+WORKDIR "${LAMBDA_TASK_ROOT}"
+RUN cp "${LAMBDA_TASK_ROOT}"/darknet/*.py "${LAMBDA_TASK_ROOT}" \
+&& cp "${LAMBDA_TASK_ROOT}"/darknet/*.so "${LAMBDA_TASK_ROOT}" \
+&& cp "${LAMBDA_TASK_ROOT}"/darknet/data/obj.* "${LAMBDA_TASK_ROOT}" \
+&& cp "${LAMBDA_TASK_ROOT}"/darknet/data/yolov4-csp*.* "${LAMBDA_TASK_ROOT}" \
+&& git clone https://github.com/assansanogo/b_s_processor.git \
+&& ls "${LAMBDA_TASK_ROOT}"/b_s_processor/lambda_functions \
+&& cp  "${LAMBDA_TASK_ROOT}"/b_s_processor/lambda_functions/yolo_5_banks.py "${LAMBDA_TASK_ROOT}" \
+&& mkdir  "${LAMBDA_TASK_ROOT}"/cfg \
+&& mkdir  "${LAMBDA_TASK_ROOT}"/data \
+&& cp  ./yolov4-csp_test.cfg "${LAMBDA_TASK_ROOT}"/cfg \
+&& cp  ./yolov4-csp_best.weights "${LAMBDA_TASK_ROOT}"/cfg \
+&& cp  ./obj.data "${LAMBDA_TASK_ROOT}"/cfg \
+&& ls "${LAMBDA_TASK_ROOT}"
+
+#CMD
+CMD ["yolo_5_banks.yolo_liberta_leasing_convert_handler"]
